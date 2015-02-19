@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <table class="table table-striped">
+    <tr>
+      <th>Artist</th>
+      <th>More Info</th> 
+      <th>Edit Artist</th>
+      <th>Delete Artist</th>
+    </tr>
+    <% @artists.each do |artist| %>
+    <tr>
+      <td><%= artist[:name] %></td>
+      <td>
+        <a href="/artists/<%= artist[:id]%>">More Info: <%=artist[:name] %></a>
+      </td>
+      <td>
+        <a href="/artists/<%= artist[:id]%>/edit">Edit <%=artist[:name] %></a>
+      </td>
+      <td>
+        <form action="/artists/<%= artist[:id]%>/delete" method="post">
+          <input type="hidden" name = "_method" value ="delete">
+            <input type="submit" value="Delete">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true">
+            
+            </span>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <form action="/artists/new" method "get">
+  <input type="submit" value="Add Artist">
+  </form>
+
+</body>
+</html>

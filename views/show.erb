@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <table class="table table-striped">
+    <tr>
+      <th>Artist</th>
+      <th>Edit Artist</th>
+      <th>Delete Artist</th>
+    </tr>
+    <tr>
+      <td><%= @artist.name %></td>
+      <td>
+        <form action="/artists/<%=@artist.name%>/delete" method="post">
+          <input type="hidden" name = "_method" value ="delete">
+          <a href="/artists/<%= @artist.id%>/edit">Edit <%=@artist.name%></a>
+        </form>
+        <td>
+          <form action="/artists/<%= @artist.id%>/delete" method="post">
+          <input type="hidden" name = "_method" value ="delete">
+            <input type="submit" value="Delete">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true">
+            
+            </span>
+        </form>
+        </td>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
